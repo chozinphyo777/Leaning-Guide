@@ -23,6 +23,9 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('admin.home');
+        return view('backend.home');
     })->name('dashboard');
+
+    Route::resource('categories', 'Dashboard\CategoryController');
+    Route::resource('posts', 'Dashboard\PostController');
 });

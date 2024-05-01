@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Learning Guide| Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -30,9 +30,9 @@
 <div class="wrapper">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
+  {{-- <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="{{'dist/img/AdminLTELogo.png'}}" alt="AdminLTELogo" height="60" width="60">
-  </div>
+  </div> --}}
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -191,7 +191,10 @@
           <!-- Menu Footer-->
           <li class="user-footer">
             <a href="#" class="btn btn-default btn-flat">Profile</a>
-            <a href="#" class="btn btn-default btn-flat float-right">Sign out</a>
+            <form action="{{route('logout')}}" method="POST" class=" d-inline">
+              @csrf
+              <button type="submit" class="btn btn-default btn-flat float-right">Sign Out</button>
+            </form>
           </li>
         </ul>
       </li>
@@ -283,6 +286,31 @@
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
+          </li>
+          {{-- Project data --}}
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+               Media
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">6</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('categories')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Categories</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/top-nav.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Contents</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -477,15 +505,15 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
-                Tables
+                Courses
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
+                <a href="{{url('categories')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Simple Tables</p>
+                  <p>Category</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -934,9 +962,11 @@
 <script src="{{'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js'}}"></script>
 <!-- AdminLTE App -->
 <script src="{{'dist/js/adminlte.js'}}"></script>
+
 <!-- AdminLTE for demo purposes -->
-<script src="{{'dist/js/demo.js'}}"></script>
+{{-- <script src="{{'dist/js/demo.js'}}"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+
 <script src="{{'dist/js/pages/dashboard.js'}}"></script>
 </body>
 </html>
